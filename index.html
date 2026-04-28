@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Game</title>
+        <meta charset="utf-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <link rel="stylesheet" href="style.css"/>
+    </head>
+
+    <body>
+
+        <h1 class="winner">Game in Progress</h1>
+
+        <table>
+            <tbody>
+                <tr>
+                    <td onclick="drawXorO(this, 0)">1</td>
+                    <td onclick="drawXorO(this, 1)">1</td>
+                    <td onclick="drawXorO(this, 2)">1</td>
+                </tr>
+
+                <tr>
+                    <td onclick="drawXorO(this, 3)">1</td>
+                    <td onclick="drawXorO(this, 4)">1</td>
+                    <td onclick="drawXorO(this, 5)">1</td>
+                </tr>
+
+                <tr>
+                    <td onclick="drawXorO(this, 6)">1</td>
+                    <td onclick="drawXorO(this, 7)">1</td>
+                    <td onclick="drawXorO(this, 8)">1</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <button onclick="clearGame()">clear</button>
+
+        <script src="script.js"></script>
+    </body>
+</html>
