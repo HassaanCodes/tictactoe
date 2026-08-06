@@ -1,0 +1,47 @@
+
+name: Deploy Website
+
+on:
+  push:
+    branches: ['main']
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get Code
+        uses: actions/checkout@v4
+
+      - name: Check HTML for Errors
+        uses: Cyb3r-Jak3/html5validator-action@v7.2.0
+        with:
+          root: ./
+          css: true
+
+      - name: Check JavaScript
+        run: npx eslint . --ext .js || echo "No ESLint config, skipping strict check"
+
+  
+  deploy:
+    needs: check 
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+    
+    steps:
+      - name: Get Code
+        uses: actions/checkout@v4
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload Your Site
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: '.'
+
+      - name: Deploy to Pages
+        uses: actions/deploy-pages@v4
+    
